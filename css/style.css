@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+header {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+header h1 {
+  font-family: "Monomaniac One", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-size: 462px;
+  color: #fa8d3e;
+
+  display: inline-block;
+  text-shadow: 10px 10px #823803;
+
+  user-select: none;
+}
+
+header p {
+  color: #fa8d3e;
+  text-align: center;
+}
+
+header img {
+  margin: auto;
+
+  animation: arrow-float 2s ease-in infinite alternate;
+}
+
+.heading {
+  font-family: "Lexend", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+@keyframes arrow-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(24px);
+  }
+}
