@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (isset($_SESSION['user_id'])) {
+    header('Location: dashboard.php');
+    exit;
+}
+
 $db_path = __DIR__ . '/db/sqlite.db';
 
 try {
