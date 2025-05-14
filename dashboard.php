@@ -95,11 +95,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <input type="submit" value="Create Project">
     </form>
-    <?php foreach ($project_list as $project): ?>
-        <p>
-            <?php echo $project; ?>
-        </p>
-    <?php endforeach; ?>
+    <a href="file_edit.php?project=<?php echo $_GET['project']; ?>">
+        View Project Plan
+    </a>
+    <h3>Projects</h3>
+    <ul>
+        <?php foreach ($project_list as $project): ?>
+            <li>
+                <a href="dashboard.php?project=<?php echo $project['id']; ?>">
+                    <?php echo $project['name']; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 
 </html>
