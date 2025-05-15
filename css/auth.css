@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Monomaniac One", sans-serif;
+  font-size: 256px;
+  color: #fa8d3e;
+  line-height: 256px;
+  margin-bottom: 26px;
+
+  display: inline-block;
+  text-shadow: 6px 6px #572502;
+
+  user-select: none;
+}
+
+form {
+  height: 100%;
+  width: 100%;
+  padding: 48px 72px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: "Lexend", sans-serif;
+  font-size: 24px;
+
+  background-color: #fa8d3e;
+  color: #572502;
+  border: 5px solid #572502;
+  border-radius: 8px;
+
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+#sign-up-error {
+  margin-bottom: 4px;
+
+  background-color: #3dabfa;
+  border-radius: 8px;
+  padding: 8px 16px;
+
+  font-family: "Lexend", sans-serif;
+  font-weight: 400;
+  color: #023357;
+  border: 5px solid #023357;
+}
+
+#sign-up-form {
+  width: 512px;
+  height: 640px;
+}
+
+#login-form {
+  width: 512px;
+  height: 480px;
+}
+
+form label {
+  width: 100%;
+}
+
+form input {
+  width: 100%;
+  height: 52px;
+  margin-bottom: 22px;
+  padding: 0 8px;
+
+  background-color: #fa8d3e;
+  color: #572502;
+  border: 3px solid #572502;
+  border-radius: 8px;
+
+  font-family: "Monomaniac One", sans-serif;
+  font-size: 20px;
+
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+  transition:
+    background-color 300ms,
+    color 300ms,
+    border 300ms;
+}
+
+form input:focus,
+form input:focus-visible {
+  outline: none;
+
+  background-color: #572502;
+  color: #fa8d3e;
+  border: 3px solid #fa8d3e;
+}
+
+form input[type="submit"] {
+  width: 224px;
+  height: 64px;
+
+  margin-top: 46px;
+
+  background-color: #3dabfa;
+  color: #fcfcfc;
+  border: 3px solid #023357;
+
+  font-family: "Lexend", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+
+  transition:
+    background-color 300ms,
+    border 300ms;
+}
+
+form input[type="submit"]:hover {
+  cursor: pointer;
+
+  background-color: #023357;
+  border: 3px solid #3dabfa;
+}
+
+form p {
+  font-family: "Lexend", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+a {
+  color: #023357;
+  transition: color 300ms;
+}
+
+a:visited {
+  color: #023357;
+}
+
+a:hover {
+  color: #3dabfa;
+}
+
+.blue-box {
+  width: 20%;
+  background-color: #3dabfa;
+  height: 100%;
+}
+
+.blue-box:first-child {
+  border-right: 5px solid #023357;
+  border-left: none;
+}
+
+.blue-box {
+  border-left: 5px solid #023357;
+}

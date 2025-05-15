@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (empty($email) || empty($password)) {
-        $message = '<p id="login-error">All fields are required.</p>';
+        $message = 'All fields are required.';
     } else {
         try {
             $stmt = $pdo->prepare("SELECT id, email, first_name, last_name, password_hash FROM users WHERE email = :email");
@@ -41,10 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: dashboard.php');
                 exit;
             } else {
-                $message = '<p id="login-error">Invalid username or password.</p>';
+                $message = 'Invalid username or password.';
             }
         } catch (PDOException $e) {
-            $message = '<p id="login-error">An unexpected database error occurred.</p>';
+            $message = 'An unexpected database error occurred.';
             error_log('PDO Error on login: ' . $e->getMessage());
         }
     }
@@ -64,25 +64,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link
         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Monomaniac+One&display=swap"
         rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/auth.css" rel="stylesheet" />
 </head>
 
 <body>
-    <h2>Login</h2>
-    <?php if (!empty($message)): ?>
-        <div>
-            <?php echo $message; ?>
-        </div>
-    <?php endif; ?>
-    <form method="post">
-        <label for="email">Email:</label>
-        <input type="email" id="login-email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
+    <div class="blue-box"></div>
+    <main>
+        <h1 class="logo-medium">FLOW</h1>
+        <?php if (!empty($message)): ?>
+            <p id="sign-up-error"><?php echo $message; ?></p>
+        <?php endif; ?>
+        <form method="post" id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="login-email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="login-password" name="password" required>
+            <label for="password">Password:</label>
+            <input type="password" id="login-password" name="password" required>
 
-        <input type="submit" value="Login">
-    </form>
+            <input type="submit" value="Login">
+            <p>If you don’t have an account, <a href="sign-up.php">sign up</a></p>
+        </form>
+    </main>
+    <div class="blue-box"></div>
 </body>
 
 </html>
