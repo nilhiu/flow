@@ -21,7 +21,8 @@ body {
   flex-direction: column;
   align-items: center;
 
-  background-color: #3dabfa;
+  /* background-color: #3dabfa; */
+  background: linear-gradient(#3dabfa 90%, #023367);
   border-right: 5px solid #023357;
 }
 
@@ -65,8 +66,8 @@ nav {
   width: 100%;
 }
 
-.action-links,
-.action-modals {
+.action-links ul,
+.action-modals ul {
   width: 100%;
 
   margin: 23px 0;
@@ -77,9 +78,15 @@ nav {
   align-items: center;
 }
 
+.action-links ul li,
+.action-modals ul li {
+  width: 70%;
+  min-width: 192px;
+}
+
 .action-links ul li a,
 .action-modals ul li button {
-  width: 192px;
+  width: 100%;
   height: 42px;
 
   background-color: #3dabfa;
