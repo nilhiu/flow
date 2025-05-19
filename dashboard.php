@@ -33,37 +33,6 @@ try {
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
-
-$message = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $project_name = trim($_POST['project_name'] ?? '');
-    if (empty($project_name)) {
-        $message = '<p id="project-create-error">All fields are required.</p>';
-    } else {
-        try {
-            $stmt = $pdo->prepare('INSERT INTO projects (name) VALUES (:name)');
-            $result_p = $stmt->execute([':name' => $project_name]);
-            $project = $stmt->fetch();
-
-            $stmt = $pdo->prepare('INSERT INTO userProjects (user_id, project_id, role) VALUES (:user_id, :project_id, :role)');
-            $result_up = $stmt->execute([
-                ':user_id' => $_SESSION['user_id'],
-                ':project_id' => $pdo->lastInsertId(),
-                ':role' => 'admin',
-            ]);
-
-            if ($result_p && $result_up) {
-                $message = '<p id="project-create-error">Project created successfully.</p>';
-            } else {
-                $message = '<p id="project-create-error">Error creating project. Please try again.</p>';
-            }
-        } catch (PDOException $e) {
-            $message = '<p id="project-create-error">An unexpected database error occurred.</p>';
-            error_log('PDO Error on project creation: ' . $e->getMessage());
-        }
-    }
-}
 ?>
 
 <!doctype html>
@@ -79,35 +48,86 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link
         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Monomaniac+One&display=swap"
         rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
-    <h2>Dashboard</h2>
-    <?php if (!empty($message)): ?>
-        <div>
-            <?php echo $message; ?>
+    <div class="sidebar">
+        <div class="profile-box">
+            <div class="avatar-circle"></div>
+            <div class="profile-info">
+                <p><?php echo $_SESSION['first_name']; ?></p>
+                <p><?php echo $_SESSION['last_name']; ?></p>
+            </div>
         </div>
-    <?php endif; ?>
-    <form method="post">
-        <label for="project_name">Project Name:</label>
-        <input type="text" id="create-project-name" name="project_name" required>
 
-        <input type="submit" value="Create Project">
-    </form>
-    <a href="file_edit.php?project=<?php echo $_GET['project']; ?>">
-        View Project Plan
-    </a>
-    <h3>Projects</h3>
-    <ul>
-        <?php foreach ($project_list as $project): ?>
-            <li>
-                <a href="dashboard.php?project=<?php echo $project['id']; ?>">
-                    <?php echo $project['name']; ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+        <nav>
+            <div class="action-modals">
+                <ul>
+                    <li>
+                        <button id="new-project-modal-btn" onclick="openNewProjectModal()">New Project</button>
+                    </li>
+                    <li>
+                        <button id="add-member-modal-btn" onclick="openAddMemberModal()">Add Member</button>
+                    </li>
+                    <li>
+                        <button id="logout-modal-btn" onclick="openLogoutModal()">Log Out</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="action-links">
+                <ul>
+                    <li>
+                        <a href="file_edit.php?project=<?php echo $_GET['project']; ?>">
+                            Project Plan
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="project-list">
+                <h3>Projects</h3>
+                <ul>
+                    <?php foreach ($project_list as $project): ?>
+                        <li>
+                            <a href="dashboard.php?project=<?php echo $project['id']; ?>">
+                                <?php echo $project['name']; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </nav>
+        <div class="footer">
+            <h4 class="logo-small">FLOW</h4>
+            <p>&copy; 2025 Giorgi Matiashvili. This project is free software licensed under the GNU General Public License.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="new-project-modal">
+        <form action="new-project.php" method="post">
+            <label for="project_name">Project Name:</label>
+            <input type="text" id="create-project-name" name="project_name" required>
+            <input type="submit" value="Create Project">
+        </form>
+    </div>
+
+    <div class="modal" id="add-member-modal">
+        <form action="add-member.php" method="post">
+            <label for="member_email">Member Email:</label>
+            <input type="email" id="add-member-email" name="member_email" required>
+            <input type="hidden" value="<?php echo $_GET['project'] ?>" name="project_id">
+            <input type="submit" value="Add Member">
+        </form>
+    </div>
+
+    <div class="modal" id="logout-modal">
+        <form action="logout.php" method="post">
+            <p>Are you sure you want to log out?</p>
+            <input type="submit" value="Log Out">
+        </form>
+    </div>
+
+    <script src="js/modal.js"></script>
 </body>
 
 </html>
