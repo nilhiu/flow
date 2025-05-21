@@ -80,7 +80,6 @@ if (isset($_GET['file'])) {
     $data_dir = $data_dir . $_GET['project'] . '/';
     $project_file = $data_dir . $_GET['file'];
     $page_title = $_GET['file'];
-    $docs = [];
 }
 
 if (!is_dir($data_dir)) {
@@ -140,52 +139,92 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>FLOW: Project Plan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Monomaniac+One&display=swap"
-        rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&family=Monomaniac+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="css/root.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
-    <h2><?php echo htmlspecialchars($page_title); ?></h2>
-    <a href="dashboard.php?project=<?php echo $_GET['project']; ?>">Go to Dashboard</a>
+    <div class="sidebar">
+        <div class="profile-box">
+            <div class="avatar-circle"></div>
+            <div class="profile-info">
+                <p><?php echo $_SESSION['first_name']; ?></p>
+                <p><?php echo $_SESSION['last_name']; ?></p>
+            </div>
+        </div>
 
-    <?php if (!isset($_GET['file'])): ?>
-        <?php if ($docs): ?>
-            <h3>Additional Documents</h3>
-            <ul>
-                <?php foreach ($docs as $doc): ?>
-                    <?php if (str_ends_with($doc, ".txt")): ?>
-                        <li>
-                            <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc; ?>">
-                                <?php echo htmlspecialchars($doc); ?>
-                            </a>
-                        </li>
-                    <?php else: ?>
-                        <li>
-                            <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc . "&download=1"; ?>">
-                                <?php echo htmlspecialchars($doc); ?>
-                            </a>
-                        </li>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    <?php else: ?>
-        <a href="file_edit.php?project=<?php echo $_GET['project'] ?>">Go to Project Plan</a>
-    <?php endif; ?>
+        <nav>
+            <div class="action-modals">
+                <ul>
+                    <li>
+                        <button id="upload-document-modal-btn" onclick="openUploadDocumentModal()">Upload Document</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="action-links">
+                <ul>
+                    <li>
+                        <a href="file_edit.php?project=<?php echo $_GET['project']; ?>">
+                            Project Plan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard.php?project=<?php echo $_GET['project']; ?>">
+                            Dashboard
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="project-list">
+                <h3>Documents</h3>
+                <ul>
+                    <?php foreach ($docs as $doc): ?>
+                        <?php if (str_ends_with($doc, ".txt")): ?>
+                            <li>
+                                <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc; ?>">
+                                    <?php echo htmlspecialchars($doc); ?>
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li>
+                                <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc . "&download=1"; ?>">
+                                    <?php echo htmlspecialchars($doc); ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </nav>
+        <div class="footer">
+            <h4 class="logo-small">FLOW</h4>
+            <p>&copy; 2025 Giorgi Matiashvili. This project is free software licensed under the GNU General Public License.</p>
+        </div>
+    </div>
 
-    <form method="post">
-        <textarea id="plan-content" name="plan_content" rows="10" cols="66"><?php echo file_get_contents($project_file); ?></textarea>
-        <input type="submit" value="Write Plan">
-    </form>
-    <form method="post">
-        <input type="submit" value="Delete Plan">
-    </form>
-    <form method="post" enctype="multipart/form-data">
-        <input id="plan-document-upload" name="document_upload" type="file">
-        <input type="submit" value="Upload Document">
-    </form>
+    <div id="documents-editing">
+        <div id="current-document">
+            <h2><?php echo htmlspecialchars($page_title); ?></h2>
+            <form method="post">
+                <textarea id="plan-content" name="plan_content" rows="10" cols="66"><?php echo file_get_contents($project_file); ?></textarea>
+                <input class="submit-button" type="submit" value="Save">
+            </form>
+        </div>
+
+        <form id="document-delete-form" method="post">
+            <input class="submit-button" type="submit" value="Delete">
+        </form>
+    </div>
+
+    <div class="modal" id="upload-document-modal">
+        <form method="post" enctype="multipart/form-data">
+            <input id="plan-document-upload" name="document_upload" type="file">
+            <input class="submit-button" type="submit" value="Upload">
+        </form>
+    </div>
+
+    <script src="js/modal.js"></script>
 </body>
 
 </html>

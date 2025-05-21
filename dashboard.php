@@ -48,6 +48,7 @@ try {
     <link
         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Monomaniac+One&display=swap"
         rel="stylesheet" />
+    <link href="css/root.css" rel="stylesheet" />
     <link href="css/dashboard.css" rel="stylesheet" />
 </head>
 

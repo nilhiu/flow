@@ -1,5 +1,7 @@
 const modals = document.querySelectorAll(".modal");
 
+// TODO: use the `.is_visible` class
+
 const openNewProjectModal = () => {
   const modal = document.querySelector("#new-project-modal");
   modal.style.visibility = "visible";
@@ -14,6 +16,12 @@ const openAddMemberModal = () => {
 
 const openLogoutModal = () => {
   const modal = document.querySelector("#logout-modal");
+  modal.style.visibility = "visible";
+  modal.style.opacity = "1";
+};
+
+const openUploadDocumentModal = () => {
+  const modal = document.querySelector("#upload-document-modal");
   modal.style.visibility = "visible";
   modal.style.opacity = "1";
 };
