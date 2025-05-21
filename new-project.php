@@ -26,11 +26,13 @@ if (empty($project_name)) {
         $project = $stmt->fetch();
 
         $stmt = $pdo->prepare('INSERT INTO userProjects (user_id, project_id, role) VALUES (:user_id, :project_id, :role)');
-        $result_up = $stmt->execute([
+        $result_up = $stmt->execute(
+            [
             ':user_id' => $_SESSION['user_id'],
             ':project_id' => $pdo->lastInsertId(),
             ':role' => 'admin',
-        ]);
+            ]
+        );
 
         if ($result_p && $result_up) {
             error_log('<p id="project-create-error">Project created successfully.</p>');

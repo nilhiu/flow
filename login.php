@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="blue-box"></div>
     <main>
         <h1 class="logo-medium">FLOW</h1>
-        <?php if (!empty($message)): ?>
+        <?php if (!empty($message)) : ?>
             <p id="sign-up-error"><?php echo $message; ?></p>
         <?php endif; ?>
         <form method="post" id="login-form">

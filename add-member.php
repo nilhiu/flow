@@ -28,10 +28,12 @@ try {
 
 try {
     $stmt = $pdo->prepare('SELECT COUNT(project_id) FROM userProjects WHERE user_id = :user_id AND project_id = :project_id');
-    $stmt->execute([
+    $stmt->execute(
+        [
         ':user_id' => $_SESSION['user_id'],
         ':project_id' => $_POST['project_id'],
-    ]);
+        ]
+    );
     if ($stmt->fetchColumn() == 0) {
         header('Location: dashboard.php');
         exit;
@@ -46,10 +48,12 @@ try {
     }
 
     $stmt = $pdo->prepare('INSERT INTO userProjects (user_id, project_id, role) VALUES (:user_id, :project_id, "member")');
-    $stmt->execute([
+    $stmt->execute(
+        [
         ':user_id' => $user['id'],
         'project_id' => $_POST['project_id'],
-    ]);
+        ]
+    );
 } catch (PDOException $e) {
     error_log('add-member.php: ' . $e->getMessage());
     header('Location: dashboard.php');

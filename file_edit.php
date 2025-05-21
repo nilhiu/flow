@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Documents</h3>
                 <ul>
                     <?php foreach ($docs as $doc): ?>
-                        <?php if (str_ends_with($doc, ".txt")): ?>
+                        <?php if (str_ends_with($doc, ".txt")) : ?>
                             <li>
                                 <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc; ?>">
                                     <?php echo htmlspecialchars($doc); ?>

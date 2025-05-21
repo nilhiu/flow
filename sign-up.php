@@ -37,12 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
                 $stmt = $pdo->prepare('INSERT INTO users (email, first_name, last_name, password_hash) VALUES (:email, :first_name, :last_name, :password_hash)');
-                $result = $stmt->execute([
+                $result = $stmt->execute(
+                    [
                     ':email' => $email,
                     ':first_name' => $first_name,
                     ':last_name' => $last_name,
                     ':password_hash' => $password_hash,
-                ]);
+                    ]
+                );
 
                 if (!$result) {
                     $message = 'Error creating account. Please try again.';
@@ -76,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="blue-box"></div>
     <main>
         <h1 class="logo-medium">FLOW</h1>
-        <?php if (!empty($message)): ?>
+        <?php if (!empty($message)) : ?>
             <p id="sign-up-error"><?php echo $message; ?></p>
         <?php endif; ?>
         <form method="post" id="sign-up-form">
