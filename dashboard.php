@@ -31,7 +31,7 @@ try {
         $project_list[] = $project;
     }
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    die('Database connection failed: ' . $e->getMessage());
 }
 ?>
 

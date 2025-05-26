@@ -32,7 +32,7 @@ try {
         exit;
     }
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    die('Database connection failed: ' . $e->getMessage());
 }
 
 $data_dir = __DIR__ . '/data/';
@@ -84,7 +84,7 @@ if (isset($_GET['file'])) {
 
 if (!is_dir($data_dir)) {
     if (!mkdir($data_dir, 0770, true)) {
-        error_log("Failed to create data directory");
+        error_log('Failed to create data directory');
         header('Location: dashboard.php?project=' . $_GET['project']);
         exit;
     }
@@ -93,7 +93,7 @@ if (!is_dir($data_dir)) {
 if (!is_file($project_file)) {
     $file = fopen($project_file, 'w');
     if (!$file) {
-        error_log("Failed to create project plan file");
+        error_log('Failed to create project plan file');
         header('Location: dashboard.php?project=' . $_GET['project']);
         exit;
     }
@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Documents</h3>
                 <ul>
                     <?php foreach ($docs as $doc): ?>
-                        <?php if (str_ends_with($doc, ".txt")) : ?>
+                        <?php if (str_ends_with($doc, '.txt')): ?>
                             <li>
                                 <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc; ?>">
                                     <?php echo htmlspecialchars($doc); ?>
@@ -188,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </li>
                         <?php else: ?>
                             <li>
-                                <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc . "&download=1"; ?>">
+                                <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) . '&file=' . $doc . '&download=1'; ?>">
                                     <?php echo htmlspecialchars($doc); ?>
                                 </a>
                             </li>

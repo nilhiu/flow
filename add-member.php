@@ -23,15 +23,15 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    die('Database connection failed: ' . $e->getMessage());
 }
 
 try {
     $stmt = $pdo->prepare('SELECT COUNT(project_id) FROM userProjects WHERE user_id = :user_id AND project_id = :project_id');
     $stmt->execute(
         [
-        ':user_id' => $_SESSION['user_id'],
-        ':project_id' => $_POST['project_id'],
+            ':user_id' => $_SESSION['user_id'],
+            ':project_id' => $_POST['project_id'],
         ]
     );
     if ($stmt->fetchColumn() == 0) {
@@ -50,8 +50,8 @@ try {
     $stmt = $pdo->prepare('INSERT INTO userProjects (user_id, project_id, role) VALUES (:user_id, :project_id, "member")');
     $stmt->execute(
         [
-        ':user_id' => $user['id'],
-        'project_id' => $_POST['project_id'],
+            ':user_id' => $user['id'],
+            'project_id' => $_POST['project_id'],
         ]
     );
 } catch (PDOException $e) {

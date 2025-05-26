@@ -9,11 +9,11 @@ if (isset($_SESSION['user_id'])) {
 $db_path = __DIR__ . '/db/sqlite.db';
 
 try {
-    $pdo = new PDO("sqlite:" . $db_path);
+    $pdo = new PDO('sqlite:' . $db_path);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    die('Database connection failed: ' . $e->getMessage());
 }
 
 $message = '';
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = 'All fields are required.';
     } else {
         try {
-            $stmt = $pdo->prepare("SELECT id, email, first_name, last_name, password_hash FROM users WHERE email = :email");
+            $stmt = $pdo->prepare('SELECT id, email, first_name, last_name, password_hash FROM users WHERE email = :email');
             $stmt->execute([':email' => $email]);
             $user = $stmt->fetch();
 
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="blue-box"></div>
     <main>
         <h1 class="logo-medium">FLOW</h1>
-        <?php if (!empty($message)) : ?>
+        <?php if (!empty($message)): ?>
             <p id="sign-up-error"><?php echo $message; ?></p>
         <?php endif; ?>
         <form method="post" id="login-form">

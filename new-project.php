@@ -13,7 +13,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    die('Database connection failed: ' . $e->getMessage());
 }
 
 $project_name = trim($_POST['project_name'] ?? '');
@@ -28,9 +28,9 @@ if (empty($project_name)) {
         $stmt = $pdo->prepare('INSERT INTO userProjects (user_id, project_id, role) VALUES (:user_id, :project_id, :role)');
         $result_up = $stmt->execute(
             [
-            ':user_id' => $_SESSION['user_id'],
-            ':project_id' => $pdo->lastInsertId(),
-            ':role' => 'admin',
+                ':user_id' => $_SESSION['user_id'],
+                ':project_id' => $pdo->lastInsertId(),
+                ':role' => 'admin',
             ]
         );
 
