@@ -30,6 +30,9 @@
   --text-shadow-orange-large: 10px 10px var(--color-orange-dark);
   --text-shadow-orange-medium: 6px 6px var(--color-orange-dark);
   --text-shadow-blue-small: 3px 3px #0681d9;
+  --text-shadow-blue-medium: 6px 6px #0681d9;
+  --text-shadow-blue-dark-medium: 6px 6px #034d82;
+  --text-shadow-orange-small: 3px 3px #d95e06;
 
   --transition-bg-border-color: background-color 300ms, border-color 300ms;
   --transition-bg-border: background-color 300ms, border 300ms;
@@ -52,6 +55,8 @@
   --space-8xl: 64px;
   --space-9xl: 72px;
   --space-10xl: 80px;
+  --space-11xl: 88px;
+  --space-12xl: 96px;
 }
 
 * {
