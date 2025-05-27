@@ -1,7 +1,7 @@
 :root {
   --font-primary: "Lexend", sans-serif;
   --font-display: "Monomaniac One", sans-serif;
-  --font-mono: "Roboto Mono", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
 
   --color-blue-primary: #3dabfa;
   --color-blue-dark-style: #034d82;
