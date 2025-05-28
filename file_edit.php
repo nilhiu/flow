@@ -99,34 +99,6 @@ if (!is_file($project_file)) {
     }
     fclose($file);
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_FILES['document_upload'])) {
-        header('Location: file_edit.php?project=' . $_GET['project']);
-        if ($_FILES['document_upload']['size'] > 500000) {
-            exit;
-        }
-
-        $file = $docs_dir . basename($_FILES['document_upload']['name']);
-        if (file_exists($file)) {
-            exit;
-        }
-
-        move_uploaded_file($_FILES['document_upload']['tmp_name'], $file);
-        exit;
-    }
-
-    if (!isset($_POST['plan_content'])) {
-        unlink($project_file);
-        header('Location: dashboard.php?project=' . $_GET['project']);
-        exit;
-    }
-
-    if (!file_put_contents($project_file, $_POST['plan_content'], LOCK_EX)) {
-        header('Location: dashboard.php?project=' . $_GET['project']);
-        exit;
-    }
-}
 ?>
 
 <!doctype html>
@@ -203,23 +175,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <div id="documents-editing">
-        <div id="current-document">
-            <h2><?php echo htmlspecialchars($page_title); ?></h2>
-            <form method="post">
-                <textarea id="plan-content" name="plan_content" rows="10" cols="66"><?php echo file_get_contents($project_file); ?></textarea>
+    <div id="document">
+        <h2><?php echo htmlspecialchars($page_title); ?></h2>
+        <form action="save_document.php" method="post">
+            <input type="hidden" value="<?php echo $_GET['project'] ?>" name="project_id">
+            <?php if (isset($_GET['file'])): ?>
+                <input type="hidden" value="<?php echo $_GET['file'] ?>" name="file">
+            <?php endif ?>
+            <textarea id="plan-content" name="content" rows="10" cols="66"><?php echo file_get_contents($project_file); ?></textarea>
+            <div>
                 <input class="submit-button" type="submit" value="Save">
-            </form>
-        </div>
-
-        <form id="document-delete-form" method="post">
-            <input class="submit-button" type="submit" value="Delete">
+                <input formaction="delete_document.php" class="submit-button" type="submit" value="Delete">
+            </div>
         </form>
     </div>
 
     <div class="modal" id="upload-document-modal">
-        <form method="post" enctype="multipart/form-data">
-            <input id="plan-document-upload" name="document_upload" type="file">
+        <form action="upload_document.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" value="<?php echo $_GET['project'] ?>" name="project_id">
+            <label for="document-upload">Upload Document:</label>
+            <input id="document-upload" name="document" type="file">
             <input class="submit-button" type="submit" value="Upload">
         </form>
     </div>

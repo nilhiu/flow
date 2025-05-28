@@ -222,46 +222,47 @@ body {
   margin-bottom: var(--space-2xl); /* 22px */
 }
 
-#documents-editing {
+#document {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
-  margin: 0 var(--space-8xl);
-  flex-grow: 1;
+  width: 70%;
+  margin: 0 auto;
 }
 
-#current-document {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  margin-right: var(--space-8xl);
-  flex-grow: 1;
-}
-
-#current-document h2 {
+#document h2 {
   margin-bottom: var(--space-md);
   font-family: var(--font-primary);
+  font-size: var(--space-6xl);
+  font-weight: 600;
   color: var(--color-text-dark-on-orange);
 }
 
-#current-document form {
+#document form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-#current-document textarea {
+#document form textarea {
   width: 100%;
   height: 70vh;
   margin-bottom: var(--space-md);
-  padding: 6px;
+  padding: var(--space-sm);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--space-xl);
   color: var(--color-text-light);
   background-color: var(--color-orange-dark);
   border: var(--border-width-md) solid var(--color-orange-primary);
   border-radius: var(--border-radius-sm);
+}
+
+#document form > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .submit-button {
@@ -269,8 +270,9 @@ body {
   box-shadow: var(--box-shadow-sm);
 }
 
-input[type="file"] {
-  margin-bottom: var(--space-md);
+.modal form > input[type="file"] {
+  height: max-content;
+  margin: var(--space-md) 0;
   padding: var(--space-md) var(--space-3xl);
   font-family: var(--font-primary);
   font-size: var(--space-xl);
@@ -281,8 +283,8 @@ input[type="file"] {
 }
 
 input[type="file"]::file-selector-button {
-  margin-right: var(--space-3xl);
-  padding: var(--space-sm) var(--space-lg);
+  margin-right: var(--space-xl);
+  padding: var(--space-lg) var(--space-lg);
   font-family: var(--font-primary);
   font-weight: 600;
   font-size: var(--space-xl);
