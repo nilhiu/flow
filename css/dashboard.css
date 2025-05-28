@@ -47,6 +47,10 @@ body {
   border-radius: var(--border-radius-circle);
 }
 
+.avatar-circle.orange {
+  border: var(--border-width-sm) solid var(--color-orange-primary);
+}
+
 .sidebar nav {
   width: 100%;
 }
@@ -220,6 +224,55 @@ body {
 
 .modal p {
   margin-bottom: var(--space-2xl); /* 22px */
+}
+
+#dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+#member-list {
+  font-family: var(--font-primary);
+  background-color: var(--color-orange-primary);
+  border: var(--border-width-md) solid var(--color-orange-dark);
+  border-radius: var(--border-radius-md);
+  width: 512px;
+  height: 80%;
+}
+
+#member-list h2 {
+  font-weight: 400;
+  text-align: center;
+  margin: var(--space-md) 0 var(--space-3xl) 0;
+}
+
+#member-list > ul {
+  width: 82%;
+  margin: var(--space-md) auto;
+}
+
+#member-list ul > li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--space-7xl);
+  margin: var(--space-sm) 0;
+  color: var(--color-text-light);
+  background-color: var(--color-orange-dark);
+  border: var(--border-width-sm) solid var(--color-orange-primary);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+}
+
+#member-list ul > li > .member-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #document {

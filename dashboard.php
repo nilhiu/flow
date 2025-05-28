@@ -9,12 +9,17 @@ if (!isset($_SESSION['user_id'])) {
 $db_path = __DIR__ . '/db/sqlite.db';
 
 $project_list = [];
+$member_list = [];
 
 try {
     $pdo = new PDO('sqlite:' . $db_path);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die('Database connection failed: ' . $e->getMessage());
+}
 
+try {
     $stmt = $pdo->prepare('SELECT project_id FROM userProjects WHERE user_id = :user_id');
     $stmt->execute([':user_id' => $_SESSION['user_id']]);
     $user_projects = $stmt->fetchAll();
@@ -29,6 +34,16 @@ try {
         $stmt->execute([':id' => $user_project['project_id']]);
         $project = $stmt->fetch();
         $project_list[] = $project;
+    }
+
+    $stmt = $pdo->prepare('SELECT user_id FROM userProjects WHERE project_id = :project_id');
+    $stmt->execute([':project_id' => $_GET['project']]);
+    $user_projects = $stmt->fetchAll();
+    foreach ($user_projects as $user_project) {
+        $stmt = $pdo->prepare('SELECT email, first_name, last_name FROM users WHERE id = :id LIMIT 1');
+        $stmt->execute([':id' => $user_project['user_id']]);
+        $user = $stmt->fetch();
+        $member_list[] = $user;
     }
 } catch (PDOException $e) {
     die('Database connection failed: ' . $e->getMessage());
@@ -99,6 +114,23 @@ try {
         <div class="footer">
             <h4 class="logo-small">FLOW</h4>
             <p>&copy; 2025 Giorgi Matiashvili. This project is free software licensed under the GNU General Public License.</p>
+        </div>
+    </div>
+
+    <div id="dashboard">
+        <div id="member-list">
+            <h2>Project Members</h2>
+            <ul>
+                <?php foreach ($member_list as $member): ?>
+                    <li>
+                        <div class="avatar-circle orange"></div>
+                        <div class="member-info">
+                            <p><?php echo $member['first_name'] . ' ' . $member['last_name'] ?></p>
+                            <p><?php echo $member['email'] ?></p>
+                        </div>
+                    </li>
+                <?php endforeach ?>
+            </ul>
         </div>
     </div>
 
