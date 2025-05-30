@@ -26,6 +26,7 @@ main form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: var(--space-6xl) var(--space-9xl);
   font-family: var(--font-primary);
   font-size: var(--space-3xl);
@@ -49,12 +50,10 @@ main form {
 
 #sign-up-form {
   width: 512px;
-  height: 640px;
 }
 
 #login-form {
   width: 512px;
-  height: 480px;
 }
 
 main form label {
@@ -70,6 +69,7 @@ main form input[type="submit"] {
 }
 
 main form p {
+  margin-top: var(--space-sm);
   font-family: var(--font-primary);
   font-size: var(--space-lg);
   font-weight: 400;
