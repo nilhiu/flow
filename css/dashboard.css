@@ -354,3 +354,16 @@ input[type="file"]::file-selector-button:hover {
   border-color: var(--color-blue-primary);
   cursor: pointer;
 }
+
+@media only screen and (max-height: 1024px) {
+  .project-list ul {
+    width: 80%;
+    min-height: 128px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  #document {
+    width: 512px;
+  }
+}
