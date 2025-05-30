@@ -249,6 +249,7 @@ body {
   font-weight: 400;
   text-align: center;
   margin: var(--space-md) 0 var(--space-3xl) 0;
+  color: var(--color-text-dark-on-orange);
 }
 
 #member-list > ul {
