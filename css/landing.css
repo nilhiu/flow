@@ -283,52 +283,98 @@ footer a:visited {
   }
 
   #features-section article {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 80%;
-    margin: 0 auto var(--space-4xl) auto;
-    border: var(--border-width-lg) solid var(--color-orange-dark);
-    border-radius: var(--border-radius-md);
   }
 
   #features-section article h3 {
-    height: 30%;
     width: 100%;
+    height: 30%;
     text-align: center;
-    font-family: var(--font-primary);
-    color: var(--color-orange-dark);
-    font-size: var(--space-3xl);
-    font-weight: 600;
-    padding: var(--space-4xl) var(--space-lg);
   }
 
   #features-section article p {
-    height: 70%;
     width: 100%;
-    background-color: var(--color-orange-dark);
-    font-family: var(--font-primary);
-    color: var(--color-orange-primary);
-    font-weight: 400;
-    font-size: var(--space-2xl);
-    padding: var(--space-4xl) var(--space-lg);
+    height: 70%;
   }
 
   #features-section article:nth-of-type(2n + 2) {
     flex-direction: column;
   }
 
+  #features-section article:nth-of-type(2n + 2) h3 {
+    text-align: center;
+  }
+
   #get-started-section article h3 {
-    font-family: var(--font-primary);
-    font-size: var(--space-6xl);
-    font-weight: 700;
-    color: var(--color-blue-primary);
-    text-decoration: underline;
     margin-bottom: var(--space-3xl);
   }
 
   footer > div > div {
     width: 40%;
-    margin-top: var(--space-lg);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  header nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: var(--space-xl) auto;
+  }
+
+  header nav a {
+    margin-left: 0;
+  }
+
+  header h1 {
+    margin-bottom: var(--space-10xl);
+    font-size: 168px;
+    line-height: 168px;
+    text-shadow: var(--text-shadow-orange-medium);
+  }
+
+  header {
+    height: calc(100% - var(--space-6xl));
+  }
+
+  #get-started-section article h3 {
+    font-size: var(--space-6xl);
+  }
+
+  #get-started-section p {
+    text-align: center;
+  }
+
+  #get-started-section p > span {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #get-started-section p span > span {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  #get-started-section article h3 {
+    font-size: var(--space-6xl);
+    text-align: center;
+  }
+
+  footer {
+    height: max-content;
+    margin-top: 128px;
+    text-align: center;
+  }
+
+  footer h2 {
+    text-align: center;
+  }
+
+  footer > div {
+    flex-direction: column;
+  }
+
+  footer > div > div {
+    width: 100%;
   }
 }
