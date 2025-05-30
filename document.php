@@ -48,7 +48,7 @@ $page_title = 'Project Plan';
 if (isset($_GET['file'])) {
     $filepath = realpath($docs_dir . basename($_GET['file']));
     if (!$filepath && !is_file($filepath)) {
-        header('Location: file_edit.php?project=' . $_GET['project']);
+        header('Location: document.php?project=' . $_GET['project']);
         exit;
     }
 
@@ -137,7 +137,7 @@ if (!is_file($project_file)) {
             <div class="action-links">
                 <ul>
                     <li>
-                        <a href="file_edit.php?project=<?php echo $_GET['project']; ?>">
+                        <a href="document.php?project=<?php echo $_GET['project']; ?>">
                             Project Plan
                         </a>
                     </li>

@@ -92,7 +92,7 @@ try {
             <div class="action-links">
                 <ul>
                     <li>
-                        <a href="file_edit.php?project=<?php echo $_GET['project']; ?>">
+                        <a href="document.php?project=<?php echo $_GET['project']; ?>">
                             Project Plan
                         </a>
                     </li>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$return_url = 'file_edit.php?project=' . $_POST['project_id'];
+$return_url = 'document.php?project=' . $_POST['project_id'];
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
