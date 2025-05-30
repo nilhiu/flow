@@ -26,10 +26,9 @@ main form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; /* Add if content is smaller than form height */
-  padding: var(--space-6xl) var(--space-9xl); /* 48px 72px */
+  padding: var(--space-6xl) var(--space-9xl);
   font-family: var(--font-primary);
-  font-size: var(--space-3xl); /* 24px */
+  font-size: var(--space-3xl);
   color: var(--color-text-dark-on-orange);
   background-color: var(--color-orange-primary);
   border: var(--border-width-md) solid var(--color-orange-dark);
@@ -98,4 +97,29 @@ main a:hover {
 
 .blue-box:not(:first-child) {
   border-left: var(--border-width-md) solid var(--color-blue-dark-dashboard);
+}
+
+@media only screen and (max-height: 1024px) {
+  main form {
+    padding: var(--space-3xl) var(--space-5xl);
+  }
+
+  #sign-up-form {
+    height: 512px;
+  }
+
+  main form input[type="submit"] {
+    margin-top: var(--space-2xl);
+  }
+
+  main form input:not([type="submit"]) {
+    margin-bottom: var(--space-xs);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  main h1 {
+    font-size: 218px;
+    line-height: 218px;
+  }
 }
