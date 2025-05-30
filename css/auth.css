@@ -123,3 +123,32 @@ main a:hover {
     line-height: 218px;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    height: 100dvh;
+  }
+
+  main h1 {
+    font-size: 160px;
+    line-height: 160px;
+  }
+
+  #sign-up-form {
+    width: 95%;
+  }
+
+  #login-form {
+    width: 95%;
+  }
+
+  main form p {
+    font-size: var(--space-md);
+  }
+
+  .blue-box {
+    display: none;
+  }
+}
