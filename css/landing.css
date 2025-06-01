@@ -208,7 +208,10 @@ h2 {
 footer {
   height: 256px;
   margin-top: var(--space-9xl);
-  background-color: var(--color-blue-primary);
+  background: linear-gradient(
+    var(--color-blue-primary),
+    var(--color-blue-dark-dashboard)
+  );
   border-top: var(--border-width-md) solid var(--color-blue-dark-dashboard);
 }
 
@@ -376,5 +379,10 @@ footer a:visited {
 
   footer > div > div {
     width: 100%;
+  }
+
+  footer a,
+  footer a:visited {
+    color: var(--color-blue-primary);
   }
 }
