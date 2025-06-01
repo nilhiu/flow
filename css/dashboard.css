@@ -9,10 +9,7 @@ body {
   width: 17%;
   min-width: 256px;
   height: 100%;
-  background: linear-gradient(
-    var(--color-blue-primary) 90%,
-    var(--color-blue-gradient-end)
-  );
+  background-color: var(--color-blue-primary);
   border-right: var(--border-width-md) solid var(--color-blue-dark-dashboard);
 }
 
