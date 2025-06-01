@@ -175,6 +175,16 @@ if (!is_file($project_file)) {
         </div>
     </div>
 
+    <div id="burger-menu-wrapper">
+        <button id="burger-menu">
+            <div>
+                <div class="burger-menu-line"></div>
+                <div class="burger-menu-line"></div>
+                <div class="burger-menu-line"></div>
+            </div>
+        </button>
+    </div>
+
     <div id="document">
         <h2><?php echo htmlspecialchars($page_title); ?></h2>
         <form action="save_document.php" method="post">
@@ -182,7 +192,7 @@ if (!is_file($project_file)) {
             <?php if (isset($_GET['file'])): ?>
                 <input type="hidden" value="<?php echo $_GET['file'] ?>" name="file">
             <?php endif ?>
-            <textarea id="plan-content" name="content" rows="10" cols="66"><?php echo file_get_contents($project_file); ?></textarea>
+            <textarea id="plan-content" name="content"><?php echo file_get_contents($project_file); ?></textarea>
             <div>
                 <input class="submit-button" type="submit" value="Save">
                 <input formaction="delete_document.php" class="submit-button" type="submit" value="Delete">
@@ -200,6 +210,7 @@ if (!is_file($project_file)) {
     </div>
 
     <script src="js/modal.js"></script>
+    <script src="js/burger-menu.js"></script>
 </body>
 
 </html>

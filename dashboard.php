@@ -117,6 +117,16 @@ try {
         </div>
     </div>
 
+    <div id="burger-menu-wrapper">
+        <button id="burger-menu">
+            <div>
+                <div class="burger-menu-line"></div>
+                <div class="burger-menu-line"></div>
+                <div class="burger-menu-line"></div>
+            </div>
+        </button>
+    </div>
+
     <div id="dashboard">
         <div id="member-list">
             <h2>Project Members</h2>
@@ -159,6 +169,7 @@ try {
     </div>
 
     <script src="js/modal.js"></script>
+    <script src="js/burger-menu.js"></script>
 </body>
 
 </html>
