@@ -167,7 +167,7 @@ body {
 
 .footer p {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--space-md);
   text-align: center;
 }
 
