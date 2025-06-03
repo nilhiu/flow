@@ -1,0 +1,28 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./public:/var/www/html
+      - ./assets:/var/www/html/assets
+      - user_data:/var/www/html/data
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+  php:
+    build: .
+    volumes:
+      - ./public:/var/www/html
+      - ./assets:/var/www/html/assets
+      - user_data:/var/www/html/data
+      - ./db:/var/www/html/db
+    command: >
+      sh -c "chown -R www-data:www-data /var/www/html/data && php-fpm"
+
+volumes:
+  user_data:
+
+networks:
+  default:
+    driver: bridge
