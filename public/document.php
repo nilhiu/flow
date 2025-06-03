@@ -38,6 +38,10 @@ try {
 $data_dir = __DIR__ . '/data/';
 $project_file = $data_dir . $_GET['project'] . '.txt';
 $docs_dir = __DIR__ . '/data/' . $_GET['project'] . '/';
+if (!is_dir($docs_dir)) {
+    mkdir($docs_dir);
+}
+
 $docs = scandir($docs_dir);
 if ($docs) {
     $docs = array_slice($docs, 2);
@@ -112,8 +116,8 @@ if (!is_file($project_file)) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Monomaniac+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link href="css/root.css" rel="stylesheet" />
-    <link href="css/dashboard.css" rel="stylesheet" />
+    <link href="assets/css/root.css" rel="stylesheet" />
+    <link href="assets/css/dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -209,8 +213,8 @@ if (!is_file($project_file)) {
         </form>
     </div>
 
-    <script src="js/modal.js"></script>
-    <script src="js/burger-menu.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/burger-menu.js"></script>
 </body>
 
 </html>

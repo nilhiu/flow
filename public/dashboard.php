@@ -61,8 +61,8 @@ try {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Monomaniac+One&display=swap" rel="stylesheet" />
-    <link href="css/root.css" rel="stylesheet" />
-    <link href="css/dashboard.css" rel="stylesheet" />
+    <link href="assets/css/root.css" rel="stylesheet" />
+    <link href="assets/css/dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -168,8 +168,8 @@ try {
         </form>
     </div>
 
-    <script src="js/modal.js"></script>
-    <script src="js/burger-menu.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/burger-menu.js"></script>
 </body>
 
 </html>

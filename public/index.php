@@ -12,8 +12,8 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Monomaniac+One&display=swap" rel="stylesheet"/>
-    <link href="css/root.css" rel="stylesheet" />
-    <link href="css/landing.css" rel="stylesheet" />
+    <link href="assets/css/root.css" rel="stylesheet" />
+    <link href="assets/css/landing.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -28,7 +28,7 @@ session_start();
         </nav>
         <h1 data-text="FLOW">FLOW</h1>
         <p class="subheading">A Little Liquid Confidence for Your Projects</p>
-        <img src="static/svg/arrow-down-circle.svg" alt="down arrow" width="48" />
+        <img src="assets/svg/arrow-down-circle.svg" alt="down arrow" width="48" />
     </header>
 
     <main>
