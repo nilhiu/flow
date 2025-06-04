@@ -69,20 +69,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="blue-box"></div>
     <main>
-        <h1 class="logo-medium"><a href="/">FLOW</a></h1>
-        <?php if (!empty($message)): ?>
-            <p id="sign-up-error"><?php echo $message; ?></p>
-        <?php endif; ?>
-        <form method="post" id="login-form">
-            <label for="email">Email:</label>
-            <input type="email" id="login-email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
+        <section>
+            <header>
+                <h1 class="logo-medium"><a href="/">FLOW</a></h1>
+            </header>
+            <?php if (!empty($message)): ?>
+                <p id="sign-up-error"><?php echo $message; ?></p>
+            <?php endif; ?>
+            <form method="post" id="login-form">
+                <label for="email">Email:</label>
+                <input type="email" id="login-email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="login-password" name="password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
 
-            <input type="submit" value="Login">
-            <p>If you don’t have an account, <a href="sign-up.php">sign up</a></p>
-        </form>
+                <input type="submit" value="Login">
+                <p>If you don’t have an account, <a href="sign-up.php">sign up</a></p>
+            </form>
+        </section>
     </main>
     <div class="blue-box"></div>
 </body>

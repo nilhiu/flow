@@ -75,26 +75,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="blue-box"></div>
     <main>
-        <h1 class="logo-medium"><a href="/">FLOW</a></h1>
-        <?php if (!empty($message)): ?>
-            <p id="sign-up-error"><?php echo $message; ?></p>
-        <?php endif; ?>
-        <form method="post" id="sign-up-form">
-            <label for="email">Email</label>
-            <input type="email" id="signup-email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
+        <section>
+            <header>
+                <h1 class="logo-medium"><a href="/">FLOW</a></h1>
+            </header>
+            <?php if (!empty($message)): ?>
+                <p id="sign-up-error"><?php echo $message; ?></p>
+            <?php endif; ?>
+            <form method="post" id="sign-up-form">
+                <label for="email">Email:</label>
+                <input type="email" id="signup-email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
 
-            <label for="first_name">First Name</label>
-            <input type="text" id="signup-first-name" name="first_name" value="<?php echo htmlspecialchars($first_name ?? ''); ?>" required>
+                <label for="first_name">First Name:</label>
+                <input type="text" id="signup-first-name" name="first_name" value="<?php echo htmlspecialchars($first_name ?? ''); ?>" required>
 
-            <label for="last_name">Last Name</label>
-            <input type="text" id="signup-last-name" name="last_name" value="<?php echo htmlspecialchars($last_name ?? ''); ?>" required>
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="signup-last-name" name="last_name" value="<?php echo htmlspecialchars($last_name ?? ''); ?>" required>
 
-            <label for="password">Password</label>
-            <input type="password" id="signup-password" name="password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
 
-            <input type="submit" value="Sign Up">
-            <p>If you already have an account, <a href="login.php">log in</a></p>
-        </form>
+                <input type="submit" value="Sign Up">
+                <p>If you already have an account, <a href="login.php">log in</a></p>
+            </form>
+        </section>
     </main>
     <div class="blue-box"></div>
 </body>

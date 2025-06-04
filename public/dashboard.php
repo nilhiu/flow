@@ -68,14 +68,14 @@ try {
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="profile-box">
+    <aside>
+        <header class="profile-box">
             <div class="avatar-circle"></div>
             <div class="profile-info">
                 <p><?php echo $_SESSION['first_name']; ?></p>
                 <p><?php echo $_SESSION['last_name']; ?></p>
             </div>
-        </div>
+        </header>
 
         <nav>
             <div class="action-modals">
@@ -113,11 +113,12 @@ try {
                 </ul>
             </div>
         </nav>
-        <div class="footer">
+
+        <footer class="footer">
             <h4 class="logo-small"><a href="/">FLOW</a></h4>
             <p>&copy; 2025 Giorgi Matiashvili. This project is free software licensed under the GNU General Public License.</p>
-        </div>
-    </div>
+        </footer>
+    </aside>
 
     <div id="burger-menu-wrapper">
         <button id="burger-menu">
@@ -129,8 +130,8 @@ try {
         </button>
     </div>
 
-    <div id="dashboard">
-        <div id="member-list">
+    <main id="dashboard">
+        <section id="member-list">
             <h2>Project Members</h2>
             <ul>
                 <?php foreach ($member_list as $member): ?>
@@ -143,8 +144,8 @@ try {
                     </li>
                 <?php endforeach ?>
             </ul>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <div class="modal" id="new-project-modal">
         <form action="new-project.php" method="post">

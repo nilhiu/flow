@@ -121,14 +121,14 @@ if (!is_file($project_file)) {
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="profile-box">
+    <aside class="sidebar">
+        <header class="profile-box">
             <div class="avatar-circle"></div>
             <div class="profile-info">
                 <p><?php echo $_SESSION['first_name']; ?></p>
                 <p><?php echo $_SESSION['last_name']; ?></p>
             </div>
-        </div>
+        </header>
 
         <nav>
             <div class="action-modals">
@@ -173,11 +173,12 @@ if (!is_file($project_file)) {
                 </ul>
             </div>
         </nav>
-        <div class="footer">
+
+        <footer class="footer">
             <h4 class="logo-small"><a href="/">FLOW</a></h4>
             <p>&copy; 2025 Giorgi Matiashvili. This project is free software licensed under the GNU General Public License.</p>
-        </div>
-    </div>
+        </footer>
+    </aside>
 
     <div id="burger-menu-wrapper">
         <button id="burger-menu">
@@ -189,20 +190,22 @@ if (!is_file($project_file)) {
         </button>
     </div>
 
-    <div id="document">
-        <h2><?php echo htmlspecialchars($page_title); ?></h2>
-        <form action="save_document.php" method="post">
-            <input type="hidden" value="<?php echo $_GET['project'] ?>" name="project_id">
-            <?php if (isset($_GET['file'])): ?>
-                <input type="hidden" value="<?php echo $_GET['file'] ?>" name="file">
-            <?php endif ?>
-            <textarea id="plan-content" name="content"><?php echo file_get_contents($project_file); ?></textarea>
-            <div>
-                <input class="submit-button" type="submit" value="Save">
-                <input formaction="delete_document.php" class="submit-button" type="submit" value="Delete">
-            </div>
-        </form>
-    </div>
+    <main id="document">
+        <section>
+            <h2><?php echo htmlspecialchars($page_title); ?></h2>
+            <form action="save_document.php" method="post">
+                <input type="hidden" value="<?php echo $_GET['project'] ?>" name="project_id">
+                <?php if (isset($_GET['file'])): ?>
+                    <input type="hidden" value="<?php echo $_GET['file'] ?>" name="file">
+                <?php endif ?>
+                <textarea id="plan-content" name="content"><?php echo file_get_contents($project_file); ?></textarea>
+                <div>
+                    <input class="submit-button" type="submit" value="Save">
+                    <input formaction="delete_document.php" class="submit-button" type="submit" value="Delete">
+                </div>
+            </form>
+        </section>
+    </main>
 
     <div class="modal" id="upload-document-modal">
         <form action="upload_document.php" method="post" enctype="multipart/form-data">
