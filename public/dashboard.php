@@ -24,26 +24,28 @@ try {
     $stmt->execute([':user_id' => $_SESSION['user_id']]);
     $user_projects = $stmt->fetchAll();
 
-    if (!isset($_GET['project'])) {
-        header('Location: dashboard.php?project=' . $user_projects[0]['project_id']);
-        exit;
-    }
+    if ($user_projects != []) {
+        if (!isset($_GET['project'])) {
+            header('Location: dashboard.php?project=' . $user_projects[0]['project_id']);
+            exit;
+        }
 
-    foreach ($user_projects as $user_project) {
-        $stmt = $pdo->prepare('SELECT id, name FROM projects WHERE id = :id LIMIT 1');
-        $stmt->execute([':id' => $user_project['project_id']]);
-        $project = $stmt->fetch();
-        $project_list[] = $project;
-    }
+        foreach ($user_projects as $user_project) {
+            $stmt = $pdo->prepare('SELECT id, name FROM projects WHERE id = :id LIMIT 1');
+            $stmt->execute([':id' => $user_project['project_id']]);
+            $project = $stmt->fetch();
+            $project_list[] = $project;
+        }
 
-    $stmt = $pdo->prepare('SELECT user_id FROM userProjects WHERE project_id = :project_id');
-    $stmt->execute([':project_id' => $_GET['project']]);
-    $user_projects = $stmt->fetchAll();
-    foreach ($user_projects as $user_project) {
-        $stmt = $pdo->prepare('SELECT email, first_name, last_name FROM users WHERE id = :id LIMIT 1');
-        $stmt->execute([':id' => $user_project['user_id']]);
-        $user = $stmt->fetch();
-        $member_list[] = $user;
+        $stmt = $pdo->prepare('SELECT user_id FROM userProjects WHERE project_id = :project_id');
+        $stmt->execute([':project_id' => $_GET['project']]);
+        $user_projects = $stmt->fetchAll();
+        foreach ($user_projects as $user_project) {
+            $stmt = $pdo->prepare('SELECT email, first_name, last_name FROM users WHERE id = :id LIMIT 1');
+            $stmt->execute([':id' => $user_project['user_id']]);
+            $user = $stmt->fetch();
+            $member_list[] = $user;
+        }
     }
 } catch (PDOException $e) {
     die('Database connection failed: ' . $e->getMessage());
@@ -92,7 +94,7 @@ try {
             <div class="action-links">
                 <ul>
                     <li>
-                        <a href="document.php?project=<?php echo $_GET['project']; ?>">
+                        <a <?php if (isset($_GET['project'])): echo 'href="document.php?project=' . $_GET['project'] . '"'; else: echo 'href="#"'; endif ?>>
                             Project Plan
                         </a>
                     </li>
