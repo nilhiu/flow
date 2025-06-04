@@ -15,13 +15,14 @@ services:
     volumes:
       - ./public:/var/www/html
       - ./assets:/var/www/html/assets
+      - ./db/migrations:/var/www/html/migrations
       - user_data:/var/www/html/data
-      - ./db:/var/www/html/db
-    command: >
-      sh -c "chown -R www-data:www-data /var/www/html/data && php-fpm"
+      - db_data:/var/www/html/db
+    command: sh -c "sh /usr/bin/db-setup.sh && chown -R www-data:www-data /var/www/html/data /var/www/html/db && exec php-fpm"
 
 volumes:
   user_data:
+  db_data:
 
 networks:
   default:

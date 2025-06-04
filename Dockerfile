@@ -6,8 +6,10 @@ RUN apk add --no-cache \
 
 WORKDIR /var/www/html
 
+COPY db-setup.sh /usr/bin/db-setup.sh
+
+RUN chmod +x /usr/bin/db-setup.sh
+
 COPY assets/ ./assets
 
 COPY public/ .
-
-USER www-data
