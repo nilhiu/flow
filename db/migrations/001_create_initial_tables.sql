@@ -1,6 +1,6 @@
 PRAGMA foreign_keys = ON;
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT NOT NULL UNIQUE,
     first_name TEXT NOT NULL,
@@ -8,13 +8,13 @@ CREATE TABLE users (
     password_hash TEXT NOT NULL
 );
 
-CREATE TABLE projects (
+CREATE TABLE IF NOT EXISTS projects (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
 );
 
 -- Junction table for the many-to-many relationship between users and projects
-CREATE TABLE userProjects (
+CREATE TABLE IF NOT EXISTS userProjects (
     user_id INTEGER NOT NULL,
     project_id INTEGER NOT NULL,
     role TEXT NOT NULL, -- e.g., 'admin', 'member', 'viewer'
