@@ -160,9 +160,17 @@ body {
   font-family: var(--font-display);
   font-size: var(--space-8xl);
   line-height: var(--space-8xl);
-  color: var(--color-blue-dark-dashboard);
   text-align: center;
   text-shadow: var(--text-shadow-blue-small);
+}
+
+.logo-small a,
+.logo-small a:visited {
+  color: var(--color-blue-dark-dashboard);
+}
+
+.logo-small a:hover {
+  color: var(--color-blue-dark-dashboard);
 }
 
 .footer p {

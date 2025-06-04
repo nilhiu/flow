@@ -174,7 +174,7 @@ if (!is_file($project_file)) {
             </div>
         </nav>
         <div class="footer">
-            <h4 class="logo-small">FLOW</h4>
+            <h4 class="logo-small"><a href="/">FLOW</a></h4>
             <p>&copy; 2025 Giorgi Matiashvili. This project is free software licensed under the GNU General Public License.</p>
         </div>
     </div>

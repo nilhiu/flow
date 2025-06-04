@@ -17,9 +17,17 @@ main h1 {
   font-family: var(--font-display);
   font-size: 256px;
   line-height: 256px;
-  color: var(--color-orange-primary);
   text-shadow: var(--text-shadow-orange-medium);
   user-select: none;
+}
+
+main h1 a,
+main h1 a:visited {
+  color: var(--color-orange-primary);
+}
+
+main h1 a:hover {
+  color: var(--color-orange-primary);
 }
 
 main form {
@@ -75,13 +83,13 @@ main form p {
   font-weight: 400;
 }
 
-main a,
-main a:visited {
+main form a,
+main form a:visited {
   color: var(--color-link-auth);
   transition: var(--transition-color);
 }
 
-main a:hover {
+main form a:hover {
   color: var(--color-link-auth-hover);
 }
 
