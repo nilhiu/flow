@@ -49,6 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!$result) {
                     $message = 'Error creating account. Please try again.';
                 }
+
+                $_SESSION['user_id'] = $pdo->lastInsertId();
+                $_SESSION['email'] = $email;
+                $_SESSION['first_name'] = $first_name;
+                $_SESSION['last_name'] = $last_name;
+                header('Location: dashboard.php');
+                exit;
             }
         } catch (PDOException $e) {
             $message = 'An unexpected database error occurred.';
