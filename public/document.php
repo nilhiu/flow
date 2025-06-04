@@ -121,7 +121,7 @@ if (!is_file($project_file)) {
 </head>
 
 <body>
-    <aside class="sidebar">
+    <aside>
         <header class="profile-box">
             <div class="avatar-circle"></div>
             <div class="profile-info">
@@ -174,7 +174,7 @@ if (!is_file($project_file)) {
             </div>
         </nav>
 
-        <footer class="footer">
+        <footer>
             <h4 class="logo-small"><a href="/">FLOW</a></h4>
             <p>&copy; 2025 Giorgi Matiashvili. This project is free software licensed under the GNU General Public License.</p>
         </footer>
