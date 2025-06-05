@@ -49,6 +49,7 @@ try {
 $file = '';
 if (isset($_POST['file'])) {
     $file = __DIR__ . '/data/' . $_POST['project_id'] . '/' . $_POST['file'];
+    $return_url = $return_url . '&file=' . $_POST['file'];
 } else {
     $file = __DIR__ . '/data/' . $_POST['project_id'] . '.txt';
 }
