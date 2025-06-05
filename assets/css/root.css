@@ -124,3 +124,18 @@ main form input[type="submit"]:hover {
   border-color: var(--color-blue-primary);
   cursor: pointer;
 }
+
+@media only screen and (max-width: 480px) {
+  .modal form input[type="submit"],
+  .submit-button,
+  main form input[type="submit"] {
+    width: 186px;
+    height: var(--space-5xl);
+    font-size: var(--space-xl);
+  }
+
+  .modal form input:not([type="submit"]),
+  main form input:not([type="submit"]) {
+    height: var(--space-5xl);
+  }
+}

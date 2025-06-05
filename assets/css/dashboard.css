@@ -326,6 +326,10 @@ footer p {
   justify-content: center;
 }
 
+#logout-modal {
+  text-align: center;
+}
+
 #document {
   height: 100%;
   width: 70%;
@@ -446,6 +450,10 @@ input[type="file"]::file-selector-button:hover {
 
   #dashboard {
     width: 95%;
+  }
+
+  #logout-modal p {
+    font-size: var(--space-xl);
   }
 
   #document {
