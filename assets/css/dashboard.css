@@ -15,7 +15,7 @@ aside {
 }
 
 aside.sidebar-open {
-  left: 0px;
+  left: 0;
 }
 
 .profile-box {
@@ -24,10 +24,11 @@ aside.sidebar-open {
   justify-content: flex-start;
   width: 83%;
   min-width: 209px;
-  height: 58px;
-  margin-top: var(--space-7xl); /* 56px */
+  height: var(--space-8xl);
+  margin-top: var(--space-7xl);
+  margin-bottom: var(--space-3xl);
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--space-md);
   color: var(--color-text-light);
   background-color: var(--color-blue-dark-dashboard);
   border: var(--border-width-md) solid var(--color-blue-primary);
@@ -41,8 +42,8 @@ aside.sidebar-open {
 }
 
 .avatar-circle {
-  width: 42px;
-  height: 42px;
+  width: var(--space-5xl);
+  height: var(--space-5xl);
   margin: 0 var(--space-md);
   background-color: var(--color-text-light);
   border: var(--border-width-sm) solid var(--color-blue-primary);
@@ -66,7 +67,7 @@ aside nav {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 23px 0;
+  margin: var(--space-md) 0;
 }
 
 .action-links ul,
@@ -87,10 +88,10 @@ aside nav {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 42px;
+  height: var(--space-4xl);
   font-family: var(--font-primary);
   font-weight: 600;
-  font-size: 20px;
+  font-size: var(--space-xl);
   color: var(--color-text-light);
   background-color: var(--color-blue-primary);
   border: var(--border-width-sm) solid var(--color-blue-dark-dashboard);
@@ -116,7 +117,7 @@ aside nav {
   flex-direction: column;
   align-items: center;
   height: 100%;
-  margin-bottom: 28px;
+  margin-bottom: var(--space-3xl);
 }
 
 .project-list h3 {
@@ -140,11 +141,11 @@ aside nav {
   align-items: center;
   justify-content: center;
   width: 95%;
-  height: 28px;
+  height: var(--space-4xl);
   margin: var(--space-sm) auto;
   font-family: var(--font-primary);
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--space-md);
   color: var(--color-text-light);
   background-color: var(--color-blue-primary);
   border: var(--border-width-sm) solid var(--color-blue-dark-dashboard);
@@ -241,7 +242,7 @@ footer p {
 }
 
 .modal p {
-  margin-bottom: var(--space-2xl); /* 22px */
+  margin-bottom: var(--space-2xl);
 }
 
 #burger-menu-wrapper {
@@ -252,8 +253,8 @@ footer p {
 
 #burger-menu {
   display: flex;
-  width: 52px;
-  height: 52px;
+  width: var(--space-7xl);
+  height: var(--space-7xl);
   background-color: var(--color-orange-primary);
   border: var(--border-width-md) solid var(--color-orange-dark);
   border-radius: var(--border-radius-circle);
@@ -270,7 +271,7 @@ footer p {
 }
 
 .burger-menu-line {
-  width: 21px;
+  width: var(--space-2xl);
   border: 2px solid var(--color-orange-dark);
   border-radius: var(--border-radius-sm);
 }

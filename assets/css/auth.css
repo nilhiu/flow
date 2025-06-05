@@ -18,7 +18,7 @@ main section {
 
 main section h1 {
   display: inline-block;
-  margin-bottom: 26px;
+  margin-bottom: var(--space-3xl);
   font-family: var(--font-display);
   font-size: 256px;
   line-height: 256px;
