@@ -9,7 +9,7 @@
   --color-blue-gradient-end: #023367;
 
   --color-orange-primary: #fa8d3e;
-  --color-orange-dark: #572502;
+  --color-orange-dark: hsl(24.71deg, 95.51%, 17.45%);
 
   --color-text-light: #fcfcfc;
   --color-text-dark-on-orange: var(--color-orange-dark);
